@@ -19,8 +19,9 @@ export function SceneServerRoutes(app: Elysia) {
       return status(404, "File Not Found");
     }
   });
-  app.get("/:id/SceneServer/*", async ({ status, params: { id } }) => {
-    const file = await getArchiveById(id, "/");
+  app.get("/:id/SceneServer/*", async ({ status, params: { id }, path }) => {
+    const _path = path.split("SceneServer/layers/0")[1].replace(/\/+$/, "");
+    const file = await getArchiveById(id, _path);
     if (file) {
       try {
         return JSON.parse(textDecoder.decode(file));
