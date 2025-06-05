@@ -15,6 +15,8 @@ export async function loadArchiveRecord(scenePath: string): Promise<void> {
     const archive = await parseSLPKArchive(new FileHandleFile(file), msg => console.log(msg));
     const archiveName = filename(file);
     if (archiveName) {
+      // eslint-disable-next-line no-console
+      console.log(`Archive record loaded: ${archiveName}`);
       slpkArchiveRecord[archiveName] = archive;
     }
   }
@@ -32,4 +34,8 @@ export async function getArchiveById(id: string, url: string) {
     }
   }
   return null;
+}
+
+export function getSceneList() {
+  return Object.keys(slpkArchiveRecord);
 }

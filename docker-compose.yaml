@@ -4,5 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
+    environment:
+      - SCENE_PATH=/scene
     ports:
       - "3000:3000"
+    volumes:
+      - "./scene:/scene"
