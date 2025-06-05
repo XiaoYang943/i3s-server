@@ -1,6 +1,23 @@
 {
   "name": "i3s-server",
   "version": "1.0.1",
+  "description": "A lightweight I3S (Indexed 3D Scene Service) server built with Elysia, designed to serve 3D scene data from SLPK (Scene Layer Package) archives",
+  "author": {
+    "email": "admin@rikka.cc",
+    "name": "Rikka",
+    "url": "https://github.com/Muromi-Rikka"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/Muromi-Rikka/i3s-server",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muromi-Rikka/i3s-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Muromi-Rikka/i3s-server/issues"
+  },
+  "keywords": ["i3s", "slpk", "3d-scene-server", "elysia", "bun"],
+  "module": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
@@ -22,6 +39,5 @@
     "@types/uuid": "^10.0.0",
     "bun-types": "latest",
     "eslint": "^9.28.0"
-  },
-  "module": "src/index.js"
+  }
 }
