@@ -2,7 +2,7 @@ import { Elysia } from "elysia";
 import { loadArchiveRecord } from "./controllers/slpk-controller";
 import { SceneServerRoutes } from "./routes/scene-server.route";
 
-const scenePath = "./scene";
+const scenePath = Bun.env.SCENE_PATH ? Bun.env.SCENE_PATH : "./scene";
 
 loadArchiveRecord(scenePath).then(() => {
   const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
