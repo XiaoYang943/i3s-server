@@ -6,8 +6,18 @@ import { filename } from "pathe/utils";
 import { joinURL } from "ufo";
 import "@loaders.gl/polyfills";
 
+/**
+ * In-memory record storing loaded SLPK archives
+ * Key: Archive name (from filename)
+ * Value: Parsed SLPKArchive object
+ */
 const slpkArchiveRecord: Record<string, SLPKArchive> = {};
 
+/**
+ * Loads and parses SLPK archives from a specified directory, storing them in memory
+ * @param scenePath - Directory path containing SLPK files to load
+ * @returns Promise resolving when all archives are loaded
+ */
 export async function loadArchiveRecord(scenePath: string): Promise<void> {
   const fileList = readdirSync(scenePath).filter(file => file.endsWith(".slpk")).map(file => joinURL(scenePath, file));
   for (const file of fileList) {
@@ -22,6 +32,12 @@ export async function loadArchiveRecord(scenePath: string): Promise<void> {
   }
 }
 
+/**
+ * Retrieves a specific file from a loaded SLPK archive
+ * @param id - Archive ID (name) to retrieve from
+ * @param url - File path within the archive to retrieve
+ * @returns Promise resolving to file content (ArrayBuffer) or null if not found
+ */
 export async function getArchiveById(id: string, url: string) {
   // eslint-disable-next-line regexp/optimal-quantifier-concatenation
   const trimmedPath = /^\/?(.*)\/?$/.exec(url);
@@ -36,6 +52,10 @@ export async function getArchiveById(id: string, url: string) {
   return null;
 }
 
+/**
+ * Gets the list of loaded SLPK archive IDs
+ * @returns Array of archive IDs (names)
+ */
 export function getSceneList() {
   return Object.keys(slpkArchiveRecord);
 }
