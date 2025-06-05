@@ -1,8 +1,7 @@
 FROM oven/bun:1 AS base
 WORKDIR /usr/src/app
 COPY . .
-USER bun
-RUN bun install
-EXPOSE 3000/tcp
+RUN bun install --frozen-lockfile
 RUN bun run build
+EXPOSE 3000/tcp
 ENTRYPOINT [ "./server"]
