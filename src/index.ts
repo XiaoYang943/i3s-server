@@ -1,6 +1,6 @@
 /**
  * Main entry point of the I3S Server application
- * Handles: 
+ * Handles:
  * - SLPK archive loading
  * - Elysia server initialization
  * - Route registration
@@ -11,18 +11,12 @@ import { loadArchiveRecord } from "./controllers/slpk-controller";
 import { SceneServerRoutes } from "./routes/scene-server.route";
 
 /**
- * Path to directory containing SLPK files
- * Uses SCENE_PATH environment variable or defaults to './scene'
- */
-const scenePath = Bun.env.SCENE_PATH ? Bun.env.SCENE_PATH : "./scene";
-
-/**
  * Initialize application flow:
  * 1. Load SLPK archives
  * 2. Start Elysia server
  * 3. Register scene server routes
  */
-loadArchiveRecord(scenePath).then(() => {
+loadArchiveRecord().then(() => {
   /**
    * Elysia application instance
    * Configured with CORS support
