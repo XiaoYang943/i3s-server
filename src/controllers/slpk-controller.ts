@@ -57,6 +57,7 @@ export async function getArchiveById(id: string, url: string) {
     const updateFile = readdirSync(scenePath).filter(file => file.endsWith(".slpk")).find(item => item === `${id}.slpk`);
     if (updateFile) {
       const filePath = joinURL(scenePath, updateFile);
+      // eslint-disable-next-line no-console
       const archive = await parseSLPKArchive(new FileHandleFile(filePath), msg => console.log(msg));
       const archiveName = filename(filePath);
       if (archiveName) {

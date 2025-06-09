@@ -11,7 +11,6 @@ const textDecoder = new TextDecoder();
 /**
  * Registers scene server routes to an Elysia application instance
  * @param app - Elysia application instance to register routes with
- * @returns The modified Elysia application instance with scene server routes
  */
 export function SceneServerRoutes(app: Elysia) {
   /**
@@ -25,9 +24,7 @@ export function SceneServerRoutes(app: Elysia) {
   /**
    * Get root scene server metadata for a specific archive
    * @route GET /:id/SceneServer/
-   * @param {Object} params - Route parameters
    * @param {string} params.id - SLPK archive ID
-   * @returns {SceneServerMetadata|404} Scene server metadata or 404 error
    */
   app.get("/:id/SceneServer/", async ({ status, params: { id } }) => {
     const file = await getArchiveById(id, "/");
@@ -42,7 +39,7 @@ export function SceneServerRoutes(app: Elysia) {
   /**
    * Get specific scene resource from an archive
    * @route GET /:id/SceneServer/*
-   * @param {Object} params - Route parameters
+   * @param {object} params - Route parameters
    * @param {string} params.id - SLPK archive ID
    * @param {string} path - Request path containing resource location
    * @returns {object|Buffer|404} Scene resource (JSON or binary) or 404 error
