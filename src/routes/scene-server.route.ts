@@ -1,6 +1,7 @@
 import type { Elysia } from "elysia";
 import destr from "destr";
-import { getArchiveById, getSceneList } from "../controllers/slpk-controller";
+import { t } from "elysia";
+import { getArchiveById, getSceneList, saveScene } from "../controllers/slpk-controller";
 import { createSceneServer } from "../utils/create-scene-server";
 
 /**
@@ -59,5 +60,23 @@ export function SceneServerRoutes(app: Elysia) {
     else {
       return status(404, "File Not Found");
     }
+  });
+
+  /**
+   * Upload endpoint for scene files
+   * @route POST /upload
+   * @method POST
+   * @param {File} body.file - The scene file to upload
+   * @returns {string} Success message indicating upload completion
+   * @description Handles file uploads by saving the provided scene file
+   *              to the configured scene directory using saveScene function
+   */
+  app.post("/upload", async ({ body: { file } }) => {
+    await saveScene(file);
+    return "upload success";
+  }, {
+    body: t.Object({
+      file: t.File(),
+    }),
   });
 }
