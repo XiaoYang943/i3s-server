@@ -1,0 +1,10 @@
+listen_port: 3000
+base_path: /scene_map_server/i3s
+datasource:
+  file:
+    xian:
+      path: D:\data\矢量数据\建筑轮廓\全国建筑轮廓(市)\建筑数据\西安建筑轮廓数据\xian.slpk
+      alias: 西安建筑面obj场景
+    xian2:
+      path: D:\data\矢量数据\建筑轮廓\全国建筑轮廓(市)\建筑数据\西安建筑轮廓数据\xian_sub.slpk
+      alias: 西安建筑面obj场景_小量
