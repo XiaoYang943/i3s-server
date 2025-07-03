@@ -4,7 +4,7 @@ import YAML from "yaml";
 import {Config} from "../type";
 
 let appConfig: Config;
-let currentConfigPath = "../../config.yaml";
+let currentConfigPath = "config.yaml";
 // 加载配置文件
 export function loadConfig() {
     const configPathArg = Bun.argv.find(arg => arg.startsWith("--config_path="));
